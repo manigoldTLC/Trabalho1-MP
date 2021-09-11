@@ -1,0 +1,89 @@
+        -:    0:Source:velha.cpp
+        -:    0:Graph:velha.gcno
+        -:    0:Data:velha.gcda
+        -:    0:Runs:2
+        -:    1:/**
+        -:    2: * \file  velha.cpp
+        -:    3: */
+        -:    4:
+        -:    5:
+        -:    6:#include "velha.hpp"
+        -:    7:
+        -:    8:/** 
+        -:    9: * @brief verifica situacao do jogo da velha  
+        -:   10: * @author Programador 
+        -:   11: * @param  velha descreve o parametro
+        -:   12: * 
+        -:   13: *  Descrever o que a funcao faz
+        -:   14: */ 
+        -:   15:
+       12:   16:int VerificaVelhaLinha( int velha[3][3] )
+        -:   17:{
+        -:   18:	int row, column;
+        -:   19:	int winner;
+        -:   20:
+       48:   21:	for (row = 0; row < 3; row++) {
+      144:   22:		for (column = 0; column < 3; column++) {
+      108:   23:			if (velha[0][0] == 1 && velha[0][1] == 1 && velha[0][2] == 1) {
+       18:   24:				winner = 1;
+        -:   25:
+       90:   26:			} else if (velha[1][0] == 1 && velha[1][1] == 1 && velha[1][2]) {
+       18:   27:				winner = 1;
+        -:   28:
+       72:   29:			} else if (velha[2][0] == 1 && velha[2][1] == 1 && velha[2][2]) {
+       18:   30:				winner = 1;
+        -:   31:			} else {
+       54:   32:				winner = 2;
+        -:   33:			}
+        -:   34:		}
+        -:   35:	}
+        -:   36:
+       12:   37:	return winner;
+        -:   38:}
+        -:   39:
+       20:   40:int VerificaVelhaColuna( int velha[3][3] )
+        -:   41:{
+        -:   42:	int row, column;
+        -:   43:	int winner;
+        -:   44:
+       80:   45:	for (row = 0; row < 3; row++) {
+      240:   46:		for (column = 0; column < 3; column++) {
+      180:   47:			if (velha[0][0] == 1 && velha[1][0] == 1 && velha[2][0] == 1) {
+       18:   48:				winner = 1;
+        -:   49:
+      162:   50:			} else if (velha[0][1] == 1 && velha[1][1] == 1 && velha[2][1]) {
+       36:   51:				winner = 1;
+        -:   52:
+      126:   53:			} else if (velha[0][2] == 1 && velha[1][2] == 1 && velha[2][2]) {
+       36:   54:				winner = 1;
+        -:   55:				
+        -:   56:			} else {
+       90:   57:				winner = 2;
+        -:   58:			}
+        -:   59:		}
+        -:   60:	}
+        -:   61:
+       20:   62:	return winner;
+        -:   63:}
+        -:   64:
+    #####:   65:int VerificaVelhaDiagonal( int velha[3][3] )
+        -:   66:{
+        -:   67:	int row, column;
+        -:   68:	int winner;
+        -:   69:
+    #####:   70:	for (row = 0; row < 3; row++) {
+    #####:   71:		for (column = 0; column < 3; column++) {
+    #####:   72:			if (velha[0][0] == 1 && velha[1][1] == 1 && velha[2][2] == 1) {
+    #####:   73:				winner = 1;
+        -:   74:
+    #####:   75:			} else if (velha[0][2] == 1 && velha[1][1] == 1 && velha[2][0]) {
+    #####:   76:				winner = 1;
+        -:   77:				
+        -:   78:			} else {
+    #####:   79:				winner = 2;
+        -:   80:			}
+        -:   81:		}
+        -:   82:	}
+        -:   83:
+    #####:   84:	return winner;
+        -:   85:}

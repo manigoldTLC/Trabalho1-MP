@@ -1,0 +1,14 @@
+Primeiramente criei um caso de teste para verificar a função VerificaVelhaLinha.
+Em cada teste, há casos em que o X ganha pelas linhas, portanto deverá retornar 1,
+
+De mesno modo, foi criado outra caso de teste dessa vez para verificar todas as linhas
+caso o ganhador seja O, retornando 2 caso seja verdade.
+
+Por conseguinte, criei mais dois casos de teste, dessa vez para verificar as colunas.
+Caso uma coluna seja completamente preenchida com X, ou seja 1, a função VerificaVelhaColuna
+deve retornar 1 que é o ganhador, senão, o ganhador será O, retornando 2.
+
+Seguindo a mesma ideia apresentada anteriormente, criei mais dois casos de teste
+cada um com dois testes em seuu escopo para verificar as duas diagonais.
+Caso uma diagonal seja totalmente preenchida por 1, deve-se retornar 1 que é o ganhador,
+senão, deverá retornar 2, que será o ganhador
