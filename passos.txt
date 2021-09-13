@@ -1,14 +1,27 @@
-Primeiramente criei um caso de teste para verificar a função VerificaVelhaLinha.
-Em cada teste, há casos em que o X ganha pelas linhas, portanto deverá retornar 1,
+No primeiro caso de teste é verificado todos os erros possiveis, retornando -2 caso o jogo
+seja impossível pelas regras, depois é testado se o jogo não foi iniciado, retornando -1
+caso todos os campos estejam vazio.
 
-De mesno modo, foi criado outra caso de teste dessa vez para verificar todas as linhas
-caso o ganhador seja O, retornando 2 caso seja verdade.
+No segundos caso de teste é verificado todas as situações que podem ocorrer empate
+retornando 0 caso tenha acontecido todas as jogadas.
 
-Por conseguinte, criei mais dois casos de teste, dessa vez para verificar as colunas.
-Caso uma coluna seja completamente preenchida com X, ou seja 1, a função VerificaVelhaColuna
-deve retornar 1 que é o ganhador, senão, o ganhador será O, retornando 2.
+No terceiro caso de teste, é verificado todos os casos em que o X ganha pelas linhas,
+retornando 1 caso seja verdade.
 
-Seguindo a mesma ideia apresentada anteriormente, criei mais dois casos de teste
-cada um com dois testes em seuu escopo para verificar as duas diagonais.
-Caso uma diagonal seja totalmente preenchida por 1, deve-se retornar 1 que é o ganhador,
-senão, deverá retornar 2, que será o ganhador
+Similarmente no quarto caso de teste é verificado todos os casos em que O ganha pelas linhas
+retornando 2 caso seja verdade.
+
+No quinto caso de teste, é verificado todos os casos em que o X ganha pelas colubas,
+retornando 1 caso seja verdade.
+
+Similarmente no sexto caso de teste é verificado todos os casos em que O ganha pelas colunas
+retornando 2 caso seja verdade.
+
+No sétimo caso de teste é verificado todos os casos em que o X ganha pelas diagonais, retornando
+1 caso verdadeiro
+
+No oitavo caso é verificado todos os casos em que O ganha pelas diagonais
+retornando 2 caso verdadeiro.
+
+É feito mais um caso de teste, sendo esse testes extras para verificar se o código está funcionando
+plenamente.

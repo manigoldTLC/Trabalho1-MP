@@ -1,7 +1,7 @@
         -:    0:Source:velha.cpp
         -:    0:Graph:velha.gcno
         -:    0:Data:velha.gcda
-        -:    0:Runs:2
+        -:    0:Runs:11
         -:    1:/**
         -:    2: * \file  velha.cpp
         -:    3: */
@@ -11,79 +11,149 @@
         -:    7:
         -:    8:/** 
         -:    9: * @brief verifica situacao do jogo da velha  
-        -:   10: * @author Programador 
-        -:   11: * @param  velha descreve o parametro
+        -:   10: * @author Gabriel Xavier Cardoso 
+        -:   11: * @param  velha um jogo representado em uma matriz 3x3 que pode conter: 0 = espaço em branco, 1 = Jogador X, 2 = Jogador O.
         -:   12: * 
-        -:   13: *  Descrever o que a funcao faz
-        -:   14: */ 
-        -:   15:
-       12:   16:int VerificaVelhaLinha( int velha[3][3] )
-        -:   17:{
-        -:   18:	int row, column;
-        -:   19:	int winner;
-        -:   20:
-       48:   21:	for (row = 0; row < 3; row++) {
-      144:   22:		for (column = 0; column < 3; column++) {
-      108:   23:			if (velha[0][0] == 1 && velha[0][1] == 1 && velha[0][2] == 1) {
-       18:   24:				winner = 1;
-        -:   25:
-       90:   26:			} else if (velha[1][0] == 1 && velha[1][1] == 1 && velha[1][2]) {
-       18:   27:				winner = 1;
-        -:   28:
-       72:   29:			} else if (velha[2][0] == 1 && velha[2][1] == 1 && velha[2][2]) {
-       18:   30:				winner = 1;
-        -:   31:			} else {
-       54:   32:				winner = 2;
-        -:   33:			}
-        -:   34:		}
-        -:   35:	}
-        -:   36:
-       12:   37:	return winner;
-        -:   38:}
-        -:   39:
-       20:   40:int VerificaVelhaColuna( int velha[3][3] )
-        -:   41:{
-        -:   42:	int row, column;
-        -:   43:	int winner;
-        -:   44:
-       80:   45:	for (row = 0; row < 3; row++) {
-      240:   46:		for (column = 0; column < 3; column++) {
-      180:   47:			if (velha[0][0] == 1 && velha[1][0] == 1 && velha[2][0] == 1) {
-       18:   48:				winner = 1;
-        -:   49:
-      162:   50:			} else if (velha[0][1] == 1 && velha[1][1] == 1 && velha[2][1]) {
-       36:   51:				winner = 1;
-        -:   52:
-      126:   53:			} else if (velha[0][2] == 1 && velha[1][2] == 1 && velha[2][2]) {
-       36:   54:				winner = 1;
-        -:   55:				
-        -:   56:			} else {
-       90:   57:				winner = 2;
-        -:   58:			}
-        -:   59:		}
-        -:   60:	}
-        -:   61:
-       20:   62:	return winner;
-        -:   63:}
-        -:   64:
-    #####:   65:int VerificaVelhaDiagonal( int velha[3][3] )
-        -:   66:{
-        -:   67:	int row, column;
-        -:   68:	int winner;
-        -:   69:
-    #####:   70:	for (row = 0; row < 3; row++) {
-    #####:   71:		for (column = 0; column < 3; column++) {
-    #####:   72:			if (velha[0][0] == 1 && velha[1][1] == 1 && velha[2][2] == 1) {
-    #####:   73:				winner = 1;
-        -:   74:
-    #####:   75:			} else if (velha[0][2] == 1 && velha[1][1] == 1 && velha[2][0]) {
-    #####:   76:				winner = 1;
-        -:   77:				
-        -:   78:			} else {
-    #####:   79:				winner = 2;
-        -:   80:			}
-        -:   81:		}
-        -:   82:	}
-        -:   83:
-    #####:   84:	return winner;
-        -:   85:}
+        -:   13: * Esse programa foi separado em funções, sendo que
+        -:   14: * VerificaVelha, VerificaColuna e VerificaDiagonal são funções auxiliares
+        -:   15: * da função principal VerificaVelha. A primeira função retorna o ganhador
+        -:   16: * pelas linhas, sendo 1 o jogador X e 2 o ganhador O;
+        -:   17: * A segunda função retorna o ganhador pelas colunas, 
+        -:   18: * da mesma forma a terceira função retorna o ganhador pelas diagonais.
+        -:   19: * Na função principal são feitas todas as condições se o jogo é totalmente impossivel
+        -:   20: * ou indeterminado pelas regras é retornado o ganhador em definitivo.
+        -:   21: */
+        -:   22:
+      264:   23:int VerificaLinha( int velha[3][3] ) {
+        -:   24:	// Declarando todas as variáveis que serão usadas
+        -:   25:	int linha, coluna, ganhador;
+        -:   26:	// Iteração para acessar cada posição da matriz
+     1056:   27:	for (linha = 0; linha < 3; linha++) {
+     3168:   28:		for (coluna = 0; coluna < 3; coluna++) {
+     2376:   29:			if (velha[0][0] == 1 && velha[0][1] == 1 && velha[0][2] == 1) {
+        -:   30:				// Verifica primeira linha, caso verdadeiro, guarda 1 na variável
+      297:   31:				ganhador = 1;
+     2079:   32:			} else if (velha[1][0] == 1 && velha[1][1] == 1 && velha[1][2] == 1) {
+        -:   33:				// Verifica segunda linha, caso verdadeiro, guarda 1 na variável
+       99:   34:				ganhador = 1;
+     1980:   35:			} else if (velha[2][0] == 1 && velha[2][1] == 1 && velha[2][2] == 1) {
+        -:   36:				// Verifica terceira linha, caso verdadeiro, guarda 1 na variável
+       99:   37:				ganhador = 1;
+        -:   38:			} else {
+        -:   39:				// Caso nenhuma condição anterior seja verdadeiro, guarda 2 na variável
+     1881:   40:				ganhador = 2;
+        -:   41:			}
+        -:   42:		}
+        -:   43:	}
+        -:   44:	// Retorna o ganhador
+      264:   45:	return ganhador;
+        -:   46:}
+        -:   47:
+      264:   48:int VerificaColuna( int velha[3][3] )
+        -:   49:{
+        -:   50:	// Declarando todas as variáveis que serão usadas
+        -:   51:	int linha, coluna;
+        -:   52:	int ganhador;
+        -:   53:	// Iteração para acessar cada posição da matriz
+     1056:   54:	for (linha = 0; linha < 3; linha++) {
+     3168:   55:		for (coluna = 0; coluna < 3; coluna++) {
+     2376:   56:			if (velha[0][0] == 1 && velha[1][0] == 1 && velha[2][0] == 1) {
+        -:   57:				// Verifica primeira coluna, caso verdadeiro, guarda 1 na variável
+      198:   58:				ganhador = 1;
+        -:   59:
+     2178:   60:			} else if (velha[0][1] == 1 && velha[1][1] == 1 && velha[2][1] == 1) {
+        -:   61:				// Verifica segunda coluna, caso verdadeiro, guarda 1 na variável
+       99:   62:				ganhador = 1;
+        -:   63:
+     2079:   64:			} else if (velha[0][2] == 1 && velha[1][2] == 1 && velha[2][2] == 1) {
+        -:   65:				// Verifica terceira coluna, caso verdadeiro, guarda 1 na variável
+      198:   66:				ganhador = 1;
+        -:   67:				
+        -:   68:			} else {
+        -:   69:				// Caso nenhuma condição anterior seja verdadeiro, guarda 2 na variável
+     1881:   70:				ganhador = 2;
+        -:   71:			}
+        -:   72:		}
+        -:   73:	}
+        -:   74:	// Retorna o ganhador
+      264:   75:	return ganhador;
+        -:   76:}
+        -:   77:
+      264:   78:int VerificaDiagonal( int velha[3][3] )
+        -:   79:{
+        -:   80:	// Declarando todas as variáveis que serão usadas
+        -:   81:	int linha, coluna;
+        -:   82:	int ganhador;
+        -:   83:	// Iteração para acessar cada posição da matriz
+     1056:   84:	for (linha = 0; linha < 3; linha++) {
+     3168:   85:		for (coluna = 0; coluna < 3; coluna++) {
+     2376:   86:			if (velha[0][0] == 1 && velha[1][1] == 1 && velha[2][2] == 1) {
+        -:   87:				// Verifica primeira diagonal, caso verdadeiro, guarda 1 na variável
+      198:   88:				ganhador = 1;
+        -:   89:
+     2178:   90:			} else if (velha[0][2] == 1 && velha[1][1] == 1 && velha[2][0]) {
+        -:   91:				// Verifica segunda diagonal, caso verdadeiro, guarda 1 na variável
+       99:   92:				ganhador = 1;
+        -:   93:				
+        -:   94:			} else {
+        -:   95:				// Caso nenhuma condição anterior seja verdadeiro, guarda 2 na variável
+     2079:   96:				ganhador = 2;
+        -:   97:			}
+        -:   98:		}
+        -:   99:	}
+        -:  100:	// Retorna o ganhador
+      264:  101:	return ganhador;
+        -:  102:}
+        -:  103:
+        -:  104:// Função principal
+      264:  105:int VerificaVelha( int velha[3][3] )
+        -:  106:{
+        -:  107:	// Declarando todas as variáveis que serão usadas
+        -:  108:	int linha, coluna, ganhador;
+        -:  109:	// Variáveis de jogadores, sendo 1 ou 2
+      264:  110:	int ganhador_x = 1;
+      264:  111:	int ganhador_o = 2;
+        -:  112:	// Variáveis de contadores
+      264:  113:	int cont_x = 0;
+      264:  114:	int cont_o = 0;
+        -:  115:	// Variáveis que são gaurdados as funções declaradas anteriormente
+      264:  116:	int ganhador_linha = VerificaLinha(velha);
+      264:  117:	int ganhador_coluna = VerificaColuna(velha);
+      264:  118:	int ganhador_diagonal = VerificaDiagonal(velha);
+        -:  119:	// É feita uma contagem de uns e dois em casa posição da matriz
+     1023:  120:	for (linha = 0; linha < 3; linha++) {
+     3069:  121:		for (coluna = 0; coluna < 3; coluna++) {
+     2310:  122:			if (velha[linha][coluna] == 1) {
+        -:  123:				// Caso haja 1 em qualquer posição, incrementa o contador cont_x
+      616:  124:				cont_x ++;
+     1694:  125:			} else if (velha[linha][coluna] == 2) {
+        -:  126:				// Caso haja 2 em qualquer posição, incrementa o contador cont_o
+      792:  127:				cont_o++;
+      902:  128:			} else if (velha[linha][coluna] != 0){
+        -:  129:				// Caso qualquer posição tenha um número diferente, retorna -2, pois é inválido
+       22:  130:				return -2;
+        -:  131:			}
+        -:  132:		}
+        -:  133:	}
+        -:  134:
+        -:  135:	// É verificado se o ganhador é 1 ou 2 e é guardado em uma variável
+      396:  136:	ganhador = ganhador_linha == 1 ? ganhador_x : ganhador_o && ganhador_coluna == 1 ? ganhador_x : ganhador_o 
+      154:  137:	&& ganhador_diagonal == 1 ? ganhador_x : ganhador_o;
+        -:  138:
+        -:  139:	// Caso o jogo ainda não foi iniciado, retorna -1
+      242:  140:	if (cont_x + cont_o == 0) {
+       11:  141:		return -1;
+        -:  142:	// Caso apenas 1 tenha jogado, retorna -2
+      231:  143:	}else if (cont_x == 9) {
+       11:  144:		return -2;
+        -:  145:	// Caso apenas 2 tenha jogado, retorna -2 
+      220:  146:	} else if (cont_o == 9) {
+       11:  147:		return -2;
+        -:  148:	// Caso haja empate, retorna 0
+      209:  149:	} else if ((cont_x == 4 && cont_o == 5) || (cont_x == 5 && cont_o == 4 && !ganhador)) {
+       22:  150:		return 0;
+        -:  151:	}
+        -:  152:
+        -:  153:	// Retorna o ganhador do jogo em definitivo
+      187:  154:	return ganhador;
+        -:  155:}
